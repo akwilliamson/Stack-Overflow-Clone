@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>StackOverflow</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <ul id="nav">
+    <li><%= link_to 'Home', root_url %></li>
+    <% if current_user %>
+      <li><%= link_to current_user.username, user_path(current_user) %></li>
+      <li><%= link_to 'Log out', session_path('current'), method: 'delete' %></li>
+    <% else %>
+      <li><%= link_to 'Log in', sessions_path %></li>
+      <li><%= link_to 'Sign up', new_user_path %></li>
+    <% end %>
+  </ul>
+  <%= flash[:notice] %>
+<%= yield %>
+
+</body>
+</html>
