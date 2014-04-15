@@ -19,8 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posted_questions = Question.all
-
+    @posted_questions = Question.where(:user_id => @user.id)
   end
 
 private

@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   def index
+    @questions = Question.all
   end
 
   def new
@@ -9,6 +10,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
+      @question.update(:user_id => current_user.id)
       respond_to do |format|
         format.html { redirect_to user_path(current_user) }
         format.js

@@ -1,25 +1,3 @@
 <h1>Create an account:</h1>
+<%= render('form') %>
 
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <h2>Form is invalid</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-  <% end %>
-  <%= f.label :username %><br>
-  <%= f.text_field :username %><br>
-
-  <%= f.label :email %><br>
-  <%= f.text_field :email %><br>
-
-  <%= f.label :password %><br>
-  <%= f.password_field :password %><br>
-
-  <%= f.label 'confirm password' %><br>
-  <%= f.password_field :password_confirmation %><br>
-
-  <%= f.submit 'Sign up' %>
-<% end %>
